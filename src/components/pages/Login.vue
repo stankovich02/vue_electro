@@ -66,6 +66,8 @@
                     username : loggedUser.username,
                     role : loggedUser.role
                 }
+                this.$store.commit("loginUser", {username : loggedUser.username,
+                    role : loggedUser.role, password: this.password});
                 localStorage.setItem("user", JSON.stringify(localStorageItem));
                 this.$router.push("/");
                 this.$emit("userLoggedIn");               

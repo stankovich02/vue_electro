@@ -147,10 +147,9 @@ export default {
 			return src + '_small.png';
 		},
 		logout() {
-			this.$store.commit("logoutUser")
-			this.$forceUpdate()
-			this.$router.push("/login")
-			location.reload();
+			this.$store.commit("logoutUser");
+			this.$router.push("/login");
+			this.$emit("userLoggedOut");
 		},
 		removeFromCart: function(id){
             // let product = document.querySelector(`.pr[data-id="${id}"]`);

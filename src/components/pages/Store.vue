@@ -198,12 +198,18 @@ export default {
         }
     },
 	mounted() {
-		this.$axios.get('models/getAsideFilter.php?table=categories').then(response => {
+		let categoryParams = {
+			table : 'categories',
+		}
+		let brandParams = {
+			table : 'brands',
+		}
+		this.$axios.get('models/getAsideFilter.php', {params : categoryParams}).then(response => {
 			this.categories = response.data
 		}).catch(error => {
 			console.log(error)
 		})
-		this.$axios.get('models/getAsideFilter.php?table=brands').then(response => {
+		this.$axios.get('models/getAsideFilter.php', {params : brandParams}).then(response => {
 			this.brands = response.data
 		}).catch(error => {
 			console.log(error)

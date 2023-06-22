@@ -48,12 +48,20 @@
     },
     mounted() {
         var that = this;
-        this.$axios.get("models/getDataForID.php?table=brand&getData=true").then(response => {
+        let categoryParams = {
+                table: "category",
+                getData: true
+        }
+        let brandParams = {
+                table: "brand",
+                getData: true
+        }
+        this.$axios.get("models/getDataForID.php", {params: brandParams}).then(response => {
             that.brands = response.data;
         }).catch(error => {
             console.log(error);
         });
-        this.$axios.get("models/getDataForID.php?table=category&getData=true").then(response => {
+        this.$axios.get("models/getDataForID.php", {params: categoryParams}).then(response => {
             that.categories = response.data;
         }).catch(error => {
             console.log(error);

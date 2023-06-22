@@ -2,7 +2,7 @@
   <div id="app">
     <Head/>
     <body>
-      <Header :headerLinks="headerLinks" :user="userLoggedIn"/>
+      <Header :headerLinks="headerLinks" :user="userLoggedIn" @userLoggedOut="logout"/>
       <Nav :links="links"/>
     <main id="main">
       <router-view @userLoggedIn="changeNav()"></router-view>
@@ -94,6 +94,19 @@ export default {
       this.userLoggedIn = true;
      
       
+    },
+    logout: function(){
+      this.headerLinks = [
+        {
+          to: "/login",
+          text: "Login"
+        },
+        {
+          to: "/register",
+          text: "Register"
+        }
+      ]
+      this.userLoggedIn = false;
     }
   }
 }

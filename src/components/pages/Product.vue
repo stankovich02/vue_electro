@@ -120,7 +120,10 @@
         mounted() {
 			var that = this
             this.name = this.$route.params.name
-            this.$axios.get('models/getSingleProduct.php?name=' + this.name).then(response => {
+			let params = {
+				name: this.name
+			}
+            this.$axios.get('models/getSingleProduct.php', {params: params}).then(response => {
 			that.product = response.data
 			if(this.product.in_stock == 0){
 				this.in_stock = "Out of stock"

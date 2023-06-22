@@ -23,22 +23,6 @@ export default {
             required: true,
             type: String
         }
-    },
-    data() {
-        return {
-            localValue: ""
-        }
-    },
-    mounted() {
-        this.localValue = this.value
-    },
-    watch: {
-        localValue: function() {
-            this.$emit("input", this.localValue)
-        },
-        value: function() {
-            this.localValue = this.value
-        }
     }
 }
 </script>
