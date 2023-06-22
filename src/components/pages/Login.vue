@@ -68,9 +68,7 @@
                 }
                 localStorage.setItem("user", JSON.stringify(localStorageItem));
                 this.$router.push("/");
-                location.reload();
-               
-                
+                this.$emit("userLoggedIn");               
             }
         }
     }

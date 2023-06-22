@@ -9,10 +9,8 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#" v-if="userLoggedIn" @click="logout"><i class="fa fa-user-o"></i> Logout</a></li>
-						<router-link to="/login"><li class="me-3"><a href="#" v-if="!userLoggedIn"><i class="fa fa-user-o"></i> Login</a></li></router-link>
-						<router-link to="/register"><li class="me-3"><a href="#" v-if="!userLoggedIn"><i class="fa fa-user-o"></i> Register</a></li></router-link>
-						<router-link to="/admin/products"><li class="me-3"><a href="#" v-if="isAdmin"><i class="fa fa-user-o"></i> Admin</a></li></router-link>
+						<li><a href="#" v-if="user" @click="logout"><i class="fa fa-user-o"></i> Logout</a></li>
+						<router-link  v-for="link in headerLinks" :key="link.to" :to="link.to"><li class="me-3"><a href="#" ><i class="fa fa-user-o"></i> {{link.text}}</a></li></router-link>
 					</ul>
 				</div>
 			</div>
@@ -110,6 +108,16 @@ export default {
 			products : []
         }
     },
+	props: {
+		user: {
+			type: Boolean,
+			required: true
+		},
+		headerLinks: {
+			type: Array,
+			required: true
+		}
+	},
 	mounted() {
 		let user = JSON.parse(localStorage.getItem('user'));
 		if (user) {

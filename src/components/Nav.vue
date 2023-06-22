@@ -20,21 +20,11 @@
 <script>
 export default {
     name: 'NavComponent',
-    data () {
-        return {
-			links: [
-				{ 
-					path: "/", 
-					text: "Home" ,
-					role: ["admin","user","unauthorized"]
-				},
-				{ 
-					path: "/store", 
-					text: "Store",
-					role: ["admin","user","unauthorized"]
-				}
-            ]
-        }
-    }
+	props: {
+		links: {
+			type: Array,
+			required: true
+		}
+	}
 }
 </script>
